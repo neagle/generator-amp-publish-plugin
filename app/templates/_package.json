@@ -1,0 +1,16 @@
+{
+  "name": "<%= _.slugify(name) %>",
+  "version": "0.1.0",
+  "devDependencies": {
+    "gulp": "^3.6.0",
+    "gulp-replace": "^0.2.0",
+    "gulp-sass": "^0.7.1",
+    "gulp-minify-css": "^0.3.1",
+    "gulp-autoprefixer": "0.0.7",
+    "gulp-notify": "^1.2.5",
+    "gulp-uglify": "^0.2.1",
+    "gulp-jshint": "^1.5.3",
+    "gulp-connect": "^2.0.5",
+    "gulp-shell": "^0.2.4"
+  }
+}

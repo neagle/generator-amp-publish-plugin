@@ -1,0 +1,38 @@
+<% if (type === 'plugin') { %>
+<blogsmith:box>
+	<blogsmith:title><%= name %></blogsmith:title>
+	<blogsmith:body>
+<% } %>
+
+	<style id="<%= _.slugify(name) %>-styles">
+	@@css
+	</style>
+
+		<div id="<%= _.slugify(name) %>"></div>
+
+		<script src="//<%= _.slugify(name) %>:8000/js/main.js"></script>
+		<script>
+		(function () {
+			var $css = $('<link>', {
+				rel: 'stylesheet',
+				type: 'text/css',
+				href: '//<%= _.slugify(name) %>:8000/css/main.css'
+			});
+			$css[0].onload = function () {
+				$('#<%= _.slugify(name) %>-styles').remove();
+			}
+			$css.prependTo($('#<%= _.slugify(name) %>'));
+
+			if (!(window.ampPlugins &&
+					window.ampPlugins['<%= _.slugify(name) %>'] &&
+					window.ampPlugins['<%= _.slugify(name) %>'].loaded)
+				 ) {
+				@@js
+			}
+		})();
+		</script>
+
+<% if (type === 'plugin') { %>
+	</blogsmith:body>
+</blogsmith:box>
+<% } %>
