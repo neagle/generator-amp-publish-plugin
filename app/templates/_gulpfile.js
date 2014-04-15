@@ -19,7 +19,7 @@ gulp.task('sass', function () {
 	.pipe(sass())
 	.pipe(autoprefixer())
 	.pipe(minifycss())
-	.pipe(gulp.dest('build/css'))
+	.pipe(gulp.dest('build/<%= _.slugify(name) %>/css'))
 	.pipe(notify({ message: 'Rebuilt Sass' }));
 });
 
@@ -29,16 +29,16 @@ gulp.task('javascript', function () {
 	.pipe(jshint('.jshintrc'))
 	.pipe(jshint.reporter('default'))
 	.pipe(uglify())
-	.pipe(gulp.dest('build/js'))
+	.pipe(gulp.dest('build/<%= _.slugify(name) %>/js'))
 	.pipe(notify({ message: 'Rebuilt JavaScript' }));
 });
 
 // Markup
 gulp.task('markup', ['sass', 'javascript'], function () {
 	return gulp.src('src/html/main.html')
-	.pipe(replace('@@css', fs.readFileSync('build/css/main.css')))
-	.pipe(replace('@@js', fs.readFileSync('build/js/main.js')))
-	.pipe(gulp.dest('build'))
+	.pipe(replace('@@css', fs.readFileSync('build/<%= _.slugify(name) %>/css/main.css')))
+	.pipe(replace('@@js', fs.readFileSync('build/<%= _.slugify(name) %>/js/main.js')))
+	.pipe(gulp.dest('build/<%= _.slugify(name) %>'))
 	.pipe(notify({ message: 'Rebuilt Markup' }));
 });
 
@@ -46,9 +46,8 @@ gulp.task('default', function () {
 	gulp.start('markup');
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', ['default'], function () {
 	connect.server({
-		host: '<%= _.slugify(name) %>',
 		root: 'build',
 		port: 8000
 	});
@@ -61,5 +60,5 @@ gulp.task('watch', function () {
 // Copy the contents of main.html to the clipboard (on Macs)
 // so that it can be pasted directly in to AMP's textarea
 gulp.task('copy', ['markup'], shell.task([
-	'pbcopy < build/main.html'
+	'pbcopy < build/<%= _.slugify(name) %>/main.html'
 ]));

@@ -10,13 +10,13 @@
 
 		<div id="<%= _.slugify(name) %>"></div>
 
-		<script src="//<%= _.slugify(name) %>:8000/js/main.js"></script>
+		<script src="//localhost:8000/<%= _.slugify(name) %>/js/main.js"></script>
 		<script>
 		(function () {
 			var $css = $('<link>', {
 				rel: 'stylesheet',
 				type: 'text/css',
-				href: '//<%= _.slugify(name) %>:8000/css/main.css'
+				href: '//localhost:8000/<%= _.slugify(name) %>/css/main.css'
 			});
 			$css[0].onload = function () {
 				$('#<%= _.slugify(name) %>-styles').remove();
