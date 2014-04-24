@@ -1,6 +1,6 @@
 {
 	"bitwise": true,
-	"camelcase": true,
+	"camelcase": false,
 	"curly": true,
 	"eqeqeq": true,
 	"forin": true,
@@ -14,7 +14,7 @@
 	"plusplus": true,
 	"quotmark": "single",
 	"undef": true,
-	"unused": true,
+	"unused": false,
 	"strict": true,
 	"trailing": true,
 	"maxparams": 4,

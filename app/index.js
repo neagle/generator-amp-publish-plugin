@@ -33,11 +33,25 @@ var AmpPublishPluginGenerator = yeoman.generators.Base.extend({
 		}];
 
 		this.prompt(prompts, function (props) {
+			var promptItems = [];
 			this.type = props.type;
-			this.prompt([{
+
+			if (this.type === 'plugin') {
+				promptItems.push({
+					type: 'confirm',
+					name: 'hidden',
+					message: 'Would you like to hide your plugin\'s pluginbox?',
+					'default': false
+				});
+			}
+
+			promptItems.push({
 				name: 'name',
 				message: 'What is the name of your ' + props.type + '?'
-			}], function (props) {
+			});
+
+			this.prompt(promptItems, function (props) {
+				this.hidden = props.hidden || false;
 				this.name = props.name;
 				done();
 			}.bind(this));

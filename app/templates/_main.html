@@ -1,28 +1,42 @@
-<% if (type === 'plugin') { %>
-<blogsmith:box>
-	<blogsmith:title><%= name %></blogsmith:title>
-	<blogsmith:body>
-<% } %>
+<% if (type === 'plugin') { %><blogsmith:box>
+<blogsmith:title><%= name %></blogsmith:title>
+<blogsmith:body><% } %>
 
 	<style id="<%= _.slugify(name) %>-styles">
 	@@css
 	</style>
 
-		<div id="<%= _.slugify(name) %>"></div>
+		<div id="<%= type %>-<%= _.slugify(name) %>">
+			<%%
+				// Add any markup you want output to the page here.
+				// Of course, you can always add it via JavaScript instead.
+			%>
+		</div>
 
+		<%% if (dev) { %>
+		<script>
+			if (window.console && window.console.log) {
+				console.log('Trying to pull CSS and JS from localhost for the <%= name %> <%= type %>...');
+			}
+		</script>
 		<script src="//localhost:8000/<%= _.slugify(name) %>/js/main.js"></script>
 		<script>
 		(function () {
+			// Try to load CSS from localhost
 			var $css = $('<link>', {
 				rel: 'stylesheet',
 				type: 'text/css',
 				href: '//localhost:8000/<%= _.slugify(name) %>/css/main.css'
 			});
+
+			// If CSS is successfully loaded from localhost, remove
+			// the styles we have above
 			$css[0].onload = function () {
 				$('#<%= _.slugify(name) %>-styles').remove();
 			}
 			$css.prependTo($('#<%= _.slugify(name) %>'));
 
+			// Try to load JS from localhost
 			if (!(window.ampPlugins &&
 					window.ampPlugins['<%= _.slugify(name) %>'] &&
 					window.ampPlugins['<%= _.slugify(name) %>'].loaded)
@@ -31,8 +45,11 @@
 			}
 		})();
 		</script>
+		<%% } else { %>
+		<script>
+			@@js
+		</script>
+		<%% } %>
 
-<% if (type === 'plugin') { %>
-	</blogsmith:body>
-</blogsmith:box>
-<% } %>
+<% if (type === 'plugin') { %></blogsmith:body>
+</blogsmith:box><% } %>

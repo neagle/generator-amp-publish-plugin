@@ -11,7 +11,9 @@ var gulp = require('gulp'),
 	fs = require('fs'),
 	replace = require('gulp-replace'),
 	connect = require('gulp-connect'),
-	shell = require('gulp-shell');
+	shell = require('gulp-shell'),
+	template = require('gulp-template'),
+	argv = require('yargs').argv;
 
 // Sass
 gulp.task('sass', function () {
@@ -20,7 +22,7 @@ gulp.task('sass', function () {
 	.pipe(autoprefixer())
 	.pipe(minifycss())
 	.pipe(gulp.dest('build/<%= _.slugify(name) %>/css'))
-	.pipe(notify({ message: 'Rebuilt Sass' }));
+	.pipe(notify({ message: 'Rebuilt CSS from Sass' }));
 });
 
 // JavaScript
@@ -38,6 +40,7 @@ gulp.task('markup', ['sass', 'javascript'], function () {
 	return gulp.src('src/html/main.html')
 	.pipe(replace('@@css', fs.readFileSync('build/<%= _.slugify(name) %>/css/main.css')))
 	.pipe(replace('@@js', fs.readFileSync('build/<%= _.slugify(name) %>/js/main.js')))
+	.pipe(template({ dev: argv.dev }))
 	.pipe(gulp.dest('build/<%= _.slugify(name) %>'))
 	.pipe(notify({ message: 'Rebuilt Markup' }));
 });
