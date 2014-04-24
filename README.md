@@ -58,7 +58,7 @@ Your JavaScript lives in `src/js/main.js`. It gets minified.
 
 ### Markup
 
-This is the actual markup you'll paste into the textarea for your plugin or screen in AMP Publish. Gulp adds your CSS and JS here.
+This is the actual markup you'll paste into the textarea for your plugin or screen in AMP Publish; it lives in `src/html/main.html`. Gulp adds your CSS and JS here.
 
 ### Development
 
