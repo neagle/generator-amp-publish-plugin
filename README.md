@@ -62,9 +62,19 @@ This is the actual markup you'll paste into the textarea for your plugin or scre
 
 ### Development
 
+```
+$ gulp watch
+```
+
 Running `gulp watch` from your project will start up a watcher that recompiles your project when files are changed as well as a local server at `localhost:8000`.
 
-To use these in [AMP Publish](http://cms.aol.com/), either create a new plugin or edit your existing plugin (*Management > Plugins* or *Management > Screens*). Type `gulp copy --dev` to compile your project and copy it to your clipboard.
+To use these in [AMP Publish](http://cms.aol.com/), either create a new plugin or edit your existing plugin (*Management > Plugins* or *Management > Screens*).
+
+To compile your project and copy it to your clipboard, run:
+
+```
+$ gulp copy --dev
+```
 
 (Note: if you're not using a Mac, you'll have to copy the contents of `build/your-plugin/main.html` to the clipboard yourself.)
 
@@ -72,7 +82,13 @@ Then paste the output into the textarea in AMP Publish for your plugin or screen
 
 ### Production
 
-When you're no longer actively developing your plugin, just run `gulp copy` to copy the contents of your plugin to clipboard without the code that tries to pull versions from localhost. If you ever want to work on the plugin again, you can just run `gulp copy --dev` again and toss that code in so that you can work on new changes without interrupting use of your plugin by others.
+When you're no longer actively developing your plugin, just run:
+
+```
+$ gulp copy
+```
+
+This will copy the contents of your plugin to clipboard without the code that tries to pull versions from localhost. If you ever want to work on the plugin again, you can just run `gulp copy --dev` again and toss that code in so that you can work on new changes without interrupting use of your plugin by others.
 
 ## License
 
