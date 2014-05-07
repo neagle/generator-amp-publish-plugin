@@ -1,6 +1,6 @@
 {
   "name": "generator-amp-publish-plugin",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A Yeoman generator to create a convenient scaffolding for AMP Publish plugins and screens.",
   "license": "MIT",
   "main": "app/index.js",

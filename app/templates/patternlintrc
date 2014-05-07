@@ -1,7 +1,7 @@
 [
 	{
 		"message": "Any external assets need to be fetched using https://.",
-		"regexp": "(url\\(http://|src=\"http://)"
+		"regexp": "(url\\(http://|src=\"http://|src: ['|\"]http://)"
 	},
 	{
 		"message": "Assets from the origin server should use SSL, with \"https://s.aolcdn.com\" instead of \"http://o.aolcdn.com\".",
