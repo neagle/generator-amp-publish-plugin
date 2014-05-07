@@ -36,9 +36,9 @@ $ yo amp-publish-plugin
 
 Files of interest:
 
-* src/js/main.js
-* src/scss/main.scss
-* src/html/main.html
+* `src/js/main.js`
+* `src/scss/main.scss`
+* `src/html/main.html`
 
 Compile your project:
 
