@@ -30,6 +30,7 @@ Create a directory for your plugin/screen, `cd` into it, then fire up the genera
 $ mkdir myplugin
 $ cd myplugin
 $ yo amp-publish-plugin
+```
 
 ### Use
 
