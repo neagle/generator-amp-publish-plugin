@@ -76,6 +76,7 @@ var AmpPublishPluginGenerator = yeoman.generators.Base.extend({
 		this.copy('gitignore', '.gitignore');
 		this.copy('editorconfig', '.editorconfig');
 		this.copy('jshintrc', '.jshintrc');
+		this.copy('patternlintrc', '.patternlintrc');
 	}
 });
 

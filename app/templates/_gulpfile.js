@@ -13,11 +13,14 @@ var gulp = require('gulp'),
 	connect = require('gulp-connect'),
 	shell = require('gulp-shell'),
 	template = require('gulp-template'),
-	argv = require('yargs').argv;
+	argv = require('yargs').argv,
+	patternlint = require('gulp-patternlint');
 
 // Sass
 gulp.task('sass', function () {
 	return gulp.src('src/scss/main.scss')
+	.pipe(patternlint())
+	.pipe(patternlint.reporter())
 	.pipe(sass())
 	.pipe(autoprefixer())
 	.pipe(minifycss())
@@ -30,6 +33,8 @@ gulp.task('javascript', function () {
 	return gulp.src('src/js/main.js')
 	.pipe(jshint('.jshintrc'))
 	.pipe(jshint.reporter('default'))
+	.pipe(patternlint())
+	.pipe(patternlint.reporter())
 	.pipe(uglify())
 	.pipe(gulp.dest('build/<%= _.slugify(name) %>/js'))
 	.pipe(notify({ message: 'Rebuilt JavaScript' }));
@@ -38,6 +43,8 @@ gulp.task('javascript', function () {
 // Markup
 gulp.task('markup', ['sass', 'javascript'], function () {
 	return gulp.src('src/html/main.html')
+	.pipe(patternlint())
+	.pipe(patternlint.reporter())
 	.pipe(replace('@@css', fs.readFileSync('build/<%= _.slugify(name) %>/css/main.css')))
 	.pipe(replace('@@js', fs.readFileSync('build/<%= _.slugify(name) %>/js/main.js')))
 	.pipe(template({ dev: argv.dev }))
