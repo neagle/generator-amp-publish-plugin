@@ -46,7 +46,7 @@ Compile your project:
 $ gulp
 ```
 
-Run a watch process that compiles files when they're changed, and fires up a local server at *http://localhost:8000/yourplugin/*.
+Run a watch process that compiles files when they're changed, and fires up a local server at `http://localhost:8000/yourplugin/`.
 
 ```shell
 $ gulp watch
