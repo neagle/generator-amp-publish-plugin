@@ -23,7 +23,7 @@ $ npm install -g yo
 Install the generator globally:
 
 ```shell
-$ npm install -g **internal git url**
+$ npm install -g <internal git url>
 ```
 
 Create a directory for your plugin/screen, `cd` into it, then fire up the generator.
