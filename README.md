@@ -1,5 +1,7 @@
 # generator-amp-publish-plugin [![NPM version][npm-image]][npm-url] [![Build status][travis-image]][travis-url]
 
+**Note:** Since this is for use on an internal AOL product, it's hosted in my public Github account purely for reference. It's still open-source; you can use any part of the code you want.
+
 A fancy [Yeoman](http://yeoman.io) generator for AMP Publish plugins and screens. It sets you up with a convenient system for developing and debugging plugins and screens from local files, even after they're published and in use.
 
 Features:
@@ -21,7 +23,7 @@ $ npm install -g yo
 Install the generator globally:
 
 ```shell
-$ npm install -g generator-amp-publish-plugin
+$ npm install -g **internal git url**
 ```
 
 Create a directory for your plugin/screen, `cd` into it, then fire up the generator.
